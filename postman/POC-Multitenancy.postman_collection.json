@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "af6d06a1-65ee-4a3f-b246-7ee9a7eade0d",
+		"name": "POC-Multitenancy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45944874",
+		"_collection_link": "https://tonyprafo.postman.co/workspace/Tony-Prafo's-Workspace~1310973a-0225-498a-82af-f779ddca0be5/collection/45944874-af6d06a1-65ee-4a3f-b246-7ee9a7eade0d?action=share&source=collection_link&creator=45944874"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/customers",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Service-Account",
+						"value": "sa_empresa_b",
+						"type": "text"
+					},
+					{
+						"key": "X-Tenant-ID",
+						"value": "tenant_b",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/tenants/me",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Service-Account",
+						"value": "sa_empresa_b",
+						"type": "text"
+					},
+					{
+						"key": "X-Tenant-ID",
+						"value": "tenant_b",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/tenants/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tenants",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/customers",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Service-Account",
+						"value": "sa_empresa_b",
+						"type": "text"
+					},
+					{
+						"key": "X-Tenant-ID",
+						"value": "tenant_b",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Cliente A1\",\n  \"email\": \"cliente.a1@empresa-a.com\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

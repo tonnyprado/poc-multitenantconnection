@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -16,6 +17,9 @@ import java.util.Map;
 public class DataSourceConfig {
 
     private static final Logger log = LoggerFactory.getLogger(DataSourceConfig.class);
+
+    @Value("${tenants.driver}")
+    private String driverName;
 
     @Bean
     public DataSource dataSource(TenantDataSourceProperties tenantDataSourceProperties) {
@@ -28,7 +32,7 @@ public class DataSourceConfig {
             ds.setUsername(props.getUsername());
             ds.setPassword(props.getPassword());
 
-            ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+            ds.setDriverClassName(driverName);
 
             log.info("Configurando DataSource para tenant {} -> {}", tenantId, props.getUrl());
             targetDataSources.put(tenantId, ds);

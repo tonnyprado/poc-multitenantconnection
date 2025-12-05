@@ -19,6 +19,7 @@ logging:
 
 # Configuración custom de tenants (para el RoutingDataSource)
 tenants:
+  driver: com.mysql.cj.jdbc.Driver
   datasources:
     tenant_a:
       url: jdbc:mysql://localhost:3306/tenant_a_db?useSSL=false&serverTimezone=UTC
